@@ -1,0 +1,1 @@
+# HCP Terraform manages remote state for this workspace
