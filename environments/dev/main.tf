@@ -17,7 +17,7 @@ module "iam_lambda" {
   environment = var.environment
   tags        = var.tags
 }
-
+/* NOTE: remove temporary
 # Lambda module to create a Lambda function using the container image from ECR
 module "lambda_service" {
   source = "../../modules/aws_lambda_service"
@@ -29,4 +29,4 @@ module "lambda_service" {
   memory_size     = var.memory_size
   timeout         = var.timeout
   tags            = var.tags
-}
+}*/
