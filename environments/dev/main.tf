@@ -17,6 +17,22 @@ module "iam_lambda" {
   environment = var.environment
   tags        = var.tags
 }
+# IAM module to create a role for GitHub OIDC authentication
+module "github_oidc" {
+  source = "../../modules/aws_iam_github_oidc"
+
+  role_name = "GitHubOIDC-EBDeploy"
+
+  github_subjects = [
+    "repo:szelese/ci-cd-gha-aws:ref:refs/heads/main",
+    "repo:szelese/v3-agnostic-lambda-core:environment:dev"
+  ]
+
+  ecr_repository_arn = module.ecr.repository_arn
+
+  tags = var.tags
+}
+
 /* NOTE: remove temporary
 # Lambda module to create a Lambda function using the container image from ECR
 module "lambda_service" {
