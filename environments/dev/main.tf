@@ -46,9 +46,3 @@ module "lambda_service" {
   timeout         = var.timeout
   tags            = var.tags
 }*/
-
-# Output the ARN of the GitHub OIDC role for use in GitHub Actions workflows
-import {
-  to = module.github_oidc.aws_iam_role.this
-  id = "GitHubOIDC-EBDeploy"
-}
