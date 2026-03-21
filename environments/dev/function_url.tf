@@ -13,7 +13,6 @@ resource "aws_lambda_permission" "function_url_public_invoke" {
   function_name = module.lambda_service.function_name
   principal     = "*"
 
-  function_url_auth_type   = "NONE"
   invoked_via_function_url = true
 }
 
