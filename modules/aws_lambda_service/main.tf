@@ -11,7 +11,7 @@ resource "aws_lambda_function" "this" {
   environment {
     variables = {
       ENVIRONMENT = var.environment
-      VERSION     = var.version
+      VERSION     = var.app_version
     }
   }
 

@@ -29,6 +29,6 @@ variable "tags" {
   default = {}
 }
 
-variable "version" {
+variable "app_version" {
   type = string
 }
