@@ -1,5 +1,10 @@
 # This file defines the main Terraform configuration for the development environment.
 
+# Image URI is constructed from the repository URL and tag provided as variables
+locals {
+  image_uri = "${var.image_repository_url}:${var.image_tag}"
+}
+
 # ECR module to create a repository for Lambda container images
 module "ecr" {
   source = "../../modules/aws_ecr"
@@ -21,7 +26,7 @@ module "iam_lambda" {
 module "github_oidc" {
   source = "../../modules/aws_iam_github_oidc"
 
-  role_name = "GitHubOIDC-EBDeploy"
+  role_name = "GitHubOIDC-EBDeploy" # Old role name was in v1, but we want to reuse the same role across environments
 
   github_subjects = [
     "repo:szelese/ci-cd-gha-aws:ref:refs/heads/main",
@@ -29,7 +34,6 @@ module "github_oidc" {
   ]
 
   ecr_repository_arn = module.ecr.repository_arn
-
   tags = var.tags
 }
 
@@ -40,7 +44,7 @@ module "lambda_service" {
 
   app_name        = var.app_name
   environment     = var.environment
-  image_uri       = var.image_uri
+  image_uri       = local.image_uri
   lambda_role_arn = module.iam_lambda.role_arn
   memory_size     = var.memory_size
   timeout         = var.timeout

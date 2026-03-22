@@ -10,7 +10,11 @@ variable "aws_region" {
   type = string
 }
 
-variable "image_uri" {
+variable "image_repository_url" {
+  type = string
+}
+
+variable "image_tag" {
   type = string
 }
 

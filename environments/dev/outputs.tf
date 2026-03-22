@@ -20,3 +20,11 @@ output "lambda_function_name" {
 output "lambda_function_arn" {
   value = module.lambda_service.function_arn
 }
+
+output "deployed_image_tag" {
+  value = var.image_tag
+}
+
+output "deployed_image_uri" {
+  value = local.image_uri
+}
