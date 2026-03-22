@@ -43,6 +43,7 @@ module "lambda_service" {
   source = "../../modules/aws_lambda_service"
 
   app_name        = var.app_name
+  version         = var.image_tag
   environment     = var.environment
   image_uri       = local.image_uri
   lambda_role_arn = module.iam_lambda.role_arn

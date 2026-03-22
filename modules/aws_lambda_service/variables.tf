@@ -28,3 +28,7 @@ variable "tags" {
   type    = map(string)
   default = {}
 }
+
+variable "version" {
+  type = string
+}
