@@ -3,7 +3,7 @@ environment = "dev"
 aws_region  = "eu-west-3"
 
 image_repository_url = "330552995255.dkr.ecr.eu-west-3.amazonaws.com/v3-agnostic-lambda-core-dev"
-image_tag            = "Core repo image SHA"
+image_tag            = "d99f1ff0335fa7314856fcaf522b08a8c1025a11"
 
 memory_size = 256
 timeout     = 10
